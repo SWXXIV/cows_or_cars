@@ -4,6 +4,19 @@
 BEEF_KG_CO2_PER_KG = 40.2
 GASOLINE_CO2_PER_GALLON = 8.887
 
+def ask_again():
+    while True:
+        go_again = input("Would you like to go again? Please enter 'Y' or 'n'.\n")
+        match go_again:
+            case 'Y':
+                break
+            case 'n':
+                global keep_going
+                keep_going = False
+                break
+            case _:
+                print("Please enter 'Y' or 'n'.")
+
 keep_going = True
 
 while keep_going:
@@ -21,16 +34,7 @@ while keep_going:
 
             print(f"Your drive emitted {CO2_emitted_driving} kg of CO2. You could have eaten {beef_equivalent} kg of beef.")
 
-            while True:
-                go_again = input("Would you like to go again? Please enter 'Y' or 'n'.\n")
-                match go_again:
-                    case 'Y':
-                        break
-                    case 'n':
-                        keep_going = False
-                        break
-                    case _:
-                        print("Please enter 'Y' or 'n'.")
+            ask_again()
 
         case "beef":
             beef_eaten = float(input("How much beef did you eat, in grams?\n"))
@@ -42,16 +46,7 @@ while keep_going:
             print(f"The beef you ate emitted {CO2_of_beef_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
                   f" miles for the same emissions.")
 
-            while True:
-                go_again = input("Would you like to go again? Please enter 'Y' or 'n'.\n")
-                match go_again:
-                    case 'Y':
-                        break
-                    case 'n':
-                        keep_going = False
-                        break
-                    case _:
-                        print("Please enter 'Y' or 'n'.")
+            ask_again()
 
         case _:
             print("That options isn't currently supported. Please select one of the supported options.")
