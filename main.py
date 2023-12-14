@@ -28,13 +28,13 @@ while keep_going:
         case "drive":
             distance = float(input("How many miles did you drive? Please enter a number.\n"))
             vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
-
             gas_used = distance / vehicle_mpg
             CO2_emitted_driving = float("{:.2f}".format(gas_used * GASOLINE_CO2_PER_GALLON))
             beef_equivalent = float("{:.2f}".format(CO2_emitted_driving / BEEF_KG_CO2_PER_KG))
             chicken_equivalent = float("{:.2f}".format(CO2_emitted_driving / CHICKEN_KG_CO2_PER_KG))
 
-            print(f"Your drive emitted {CO2_emitted_driving} kg of CO2. You could have eaten {beef_equivalent} kg of beef, or {chicken_equivalent} kg of chicken.")
+            print(f"Your drive emitted {CO2_emitted_driving} kg of CO2. You could have eaten {beef_equivalent} kg of "
+                  f"beef, or {chicken_equivalent} kg of chicken.")
 
             ask_again()
 
@@ -43,7 +43,6 @@ while keep_going:
             CO2_of_beef_eaten = float("{:.2f}".format((beef_eaten/1000) * BEEF_KG_CO2_PER_KG))
             vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
             chicken_equivalent = float("{:.2f}".format(CO2_of_beef_eaten / CHICKEN_KG_CO2_PER_KG))
-
             distance_possibly_driven = float("{:.2f}".format((CO2_of_beef_eaten / GASOLINE_CO2_PER_GALLON)*vehicle_mpg))
 
             print(f"The beef you ate emitted {CO2_of_beef_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
@@ -57,7 +56,6 @@ while keep_going:
             CO2_of_chicken_eaten = float("{:.2f}".format((chicken_eaten/1000) * CHICKEN_KG_CO2_PER_KG))
             vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
             beef_equivalent = float("{:.2f}".format(CO2_of_chicken_eaten / BEEF_KG_CO2_PER_KG))
-
             distance_possibly_driven = float("{:.2f}".format((CO2_of_chicken_eaten / GASOLINE_CO2_PER_GALLON)*vehicle_mpg))
 
             print(f"The chicken you ate emitted {CO2_of_chicken_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
@@ -65,6 +63,7 @@ while keep_going:
             print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
 
             ask_again()
+
         case _:
             print("That options isn't currently supported. Please select one of the supported options.")
 
