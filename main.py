@@ -32,8 +32,9 @@ while keep_going:
             gas_used = distance / vehicle_mpg
             CO2_emitted_driving = float("{:.2f}".format(gas_used * GASOLINE_CO2_PER_GALLON))
             beef_equivalent = float("{:.2f}".format(CO2_emitted_driving / BEEF_KG_CO2_PER_KG))
+            chicken_equivalent = float("{:.2f}".format(CO2_emitted_driving / CHICKEN_KG_CO2_PER_KG))
 
-            print(f"Your drive emitted {CO2_emitted_driving} kg of CO2. You could have eaten {beef_equivalent} kg of beef.")
+            print(f"Your drive emitted {CO2_emitted_driving} kg of CO2. You could have eaten {beef_equivalent} kg of beef, or {chicken_equivalent} kg of chicken.")
 
             ask_again()
 
