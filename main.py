@@ -73,7 +73,7 @@ while keep_going:
             beef_equivalent = float("{:.2f}".format(CO2_of_coffee_consumed / BEEF_KG_CO2_PER_KG))
             distance_possibly_driven = float("{:.2f}".format((CO2_of_coffee_consumed / GASOLINE_CO2_PER_GALLON)*vehicle_mpg))
 
-            print(f"The coffee you drank emitted {CO2_of_chicken_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
+            print(f"The coffee you drank emitted {CO2_of_coffee_consumed} kg of CO2. You could have driven your car {distance_possibly_driven}"
                   f" miles for the same emissions.")
             print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
 
