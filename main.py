@@ -4,7 +4,7 @@
 BEEF_KG_CO2_PER_KG = 40.2
 CHICKEN_KG_CO2_PER_KG = 6.9
 GASOLINE_CO2_PER_GALLON = 8.887
-COFFE_KG_CO2_PER_CUP_15g = 0.4
+COFFEE_KG_CO2_PER_CUP_15g = 0.4
 
 
 def ask_again():
@@ -24,7 +24,7 @@ keep_going = True
 
 while keep_going:
 
-    choice = input("Did you drive, eat beef, or eat chicken? Please type 'drive', 'beef', or 'chicken'.\n").lower()
+    choice = input("Did you drive, eat beef, eat chicken, or drink coffee? Please type 'drive', 'beef', 'chicken', or 'coffee'.\n").lower()
 
     match choice:
         case "drive":
@@ -61,6 +61,19 @@ while keep_going:
             distance_possibly_driven = float("{:.2f}".format((CO2_of_chicken_eaten / GASOLINE_CO2_PER_GALLON)*vehicle_mpg))
 
             print(f"The chicken you ate emitted {CO2_of_chicken_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
+                  f" miles for the same emissions.")
+            print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
+
+            ask_again()
+
+        case "coffee":
+            coffee_cups_consumed = float(input("How much coffee did you drink, in cups?\n"))
+            CO2_of_coffee_consumed = float("{:.2f}".format((coffee_cups_consumed) * COFFEE_KG_CO2_PER_CUP_15g))
+            vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
+            beef_equivalent = float("{:.2f}".format(CO2_of_coffee_consumed / BEEF_KG_CO2_PER_KG))
+            distance_possibly_driven = float("{:.2f}".format((CO2_of_coffee_consumed / GASOLINE_CO2_PER_GALLON)*vehicle_mpg))
+
+            print(f"The coffee you drank emitted {CO2_of_chicken_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
                   f" miles for the same emissions.")
             print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
 
