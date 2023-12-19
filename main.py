@@ -4,6 +4,8 @@
 BEEF_KG_CO2_PER_KG = 40.2
 CHICKEN_KG_CO2_PER_KG = 6.9
 GASOLINE_CO2_PER_GALLON = 8.887
+COFFE_KG_CO2_PER_CUP_15g = 0.4
+
 
 def ask_again():
     while True:
