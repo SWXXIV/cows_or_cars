@@ -14,6 +14,6 @@ I don't know why I want this to be a table in a RDB. A dict works fine so far!
 from co2_impacts import co2_impacts
 
 def get_carbon_impact(activity: str, qty: float) -> float:
-    return co2_impacts[activity] * qty
+    return (co2_impacts[activity] * qty)
 
-print(get_carbon_impact("beef"))
+#print(get_carbon_impact("beef", 0.54))

@@ -1,5 +1,7 @@
 # calculator to determine how many miles you could have driven for the amount of beef you ate
 # or the amount of beef you could have eaten for how far you drove
+from get_carbon_impact import get_carbon_impact
+from co2_impacts import co2_impacts
 
 BEEF_KG_CO2_PER_KG = 40.2
 CHICKEN_KG_CO2_PER_KG = 6.9
@@ -33,7 +35,7 @@ def main():
                 distance = float(input("How many miles did you drive? Please enter a number.\n"))
                 vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
                 gas_used = distance / vehicle_mpg
-                CO2_emitted_driving = float("{:.2f}".format(gas_used * GASOLINE_CO2_PER_GALLON))
+                CO2_emitted_driving = get_carbon_impact("gasoline", gas_used) #float("{:.2f}".format(gas_used * GASOLINE_CO2_PER_GALLON))
                 beef_equivalent = float("{:.2f}".format(CO2_emitted_driving / BEEF_KG_CO2_PER_KG))
                 chicken_equivalent = float("{:.2f}".format(CO2_emitted_driving / CHICKEN_KG_CO2_PER_KG))
 
