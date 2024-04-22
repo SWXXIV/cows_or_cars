@@ -12,8 +12,27 @@ I don't know why I want this to be a table in a RDB. A dict works fine so far!
 '''
 
 from co2_impacts import co2_impacts
+import csv
 
-def get_carbon_impact(activity: str, qty: float) -> float:
+def get_carbon_impact_dict(activity: str, qty: float) -> float:
     return (co2_impacts[activity] * qty)
 
+def list_carbon_impacts_poore():
+    with open('ghg-per-kg-poore.csv') as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=',')
+        line_count = 0
+        for row in csv_reader:
+            if line_count == 0:
+                print(f'Column names are {", ".join(row)}')
+                line_count += 1
+            else:
+                print(f'\t{row[0]} have {row[3]} kgCO2/kg.')
+                line_count += 1
+        print(f'Processed {line_count} lines.')
+
+
+
 #print(get_carbon_impact("beef", 0.54))
+
+if __name__ == "__main__":
+    list_carbon_impact_poore()
