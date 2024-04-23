@@ -17,6 +17,29 @@ import csv
 def get_carbon_impact_dict(activity: str, qty: float) -> float:
     return (co2_impacts[activity] * qty)
 
+def get_fuel_impact(qty: float) -> dict:
+    '''get_fuel_impact takes a float of the quantity of emitted carbon and returns a dict
+    of fuels, showing the amount of fuel you could have burned to emit the same carbon.'''
+    fuel_carbons = {
+        "KWh": .092, # kg per KWh, WA state, from https://www.eia.gov/electricity/state/washington/, converted to kg/ KWh
+        "propane": 5.75, # kg per gallon, from https://www.eia.gov/environment/emissions/co2_vol_mass.php
+        "cordwood": 2200, # per cord, https://extension.psu.edu/conversions-commonly-used-when-comparing-timber-and-carbon-values
+        "gasoline": 8.1, # kg per gal, accounts for ethanol blending
+        "diesel": 10.19,
+        "natural gas": 54.87, # kg per thousand cubic feet
+    }
+    fuel_quantities = {
+        "KWh": None,
+        "propane": None,
+        "cordwood": None,
+        "gasoline": None,
+        "diesel": None,
+        "natural gas": None
+    }
+    for i in fuel_carbons:
+        fuel_quantities[i] = qty/ fuel_carbons[i]
+    return fuel_quantities
+
 def list_carbon_impacts_poore():
     with open('ghg-per-kg-poore.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
@@ -53,3 +76,4 @@ def build_CO2_dict():
 
 if __name__ == "__main__":
     build_CO2_dict()
+    # print(get_fuel_impact(10.5))

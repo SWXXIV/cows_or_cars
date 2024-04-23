@@ -30,7 +30,6 @@ def calc_vehicle_equivalent(co2: float) -> float:
     distance_possibly_driven = float("{:.2f}".format((co2 / GASOLINE_CO2_PER_GALLON) * vehicle_mpg))
     return distance_possibly_driven
 
-
 def main():
 
     while keep_going:
