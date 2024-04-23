@@ -1,6 +1,7 @@
 # calculator to determine how many miles you could have driven for the amount of beef you ate
 # or the amount of beef you could have eaten for how far you drove
 from get_carbon_impact import get_carbon_impact_dict
+from co2_impacts import co2_impacts
 from co2_impacts_poore import ghg_poore as ghg
 
 BEEF_KG_CO2_PER_KG = 40.2
@@ -23,6 +24,12 @@ def ask_again():
                 break
             case _:
                 print("Please enter 'Y' or 'n'.")
+
+def calc_vehicle_equivalent(co2: float) -> float:
+    vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
+    distance_possibly_driven = float("{:.2f}".format((co2 / GASOLINE_CO2_PER_GALLON) * vehicle_mpg))
+    return distance_possibly_driven
+
 
 def main():
 
@@ -80,6 +87,31 @@ def main():
                 print(f"The coffee you drank emitted {CO2_of_coffee_consumed} kg of CO2. You could have driven your car {distance_possibly_driven}"
                       f" miles for the same emissions.")
                 print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
+
+                ask_again()
+
+            case "pbh":
+                pbh_eaten = input("How many peanut butter and honey sandwiches did you consume?\n")
+                co2_PB = float("{:.2f}".format(.2 * co2_impacts["peanut butter"]))
+                co2_honey = float("{:.2f}".format(.013 * co2_impacts["honey"]))
+                co2_bread = float("{:.2f}".format(2 * co2_impacts["bread slice"]))
+                co2_total = co2_bread + co2_PB + co2_honey
+
+                vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
+                beef_equivalent = float("{:.2f}".format(co2_total / BEEF_KG_CO2_PER_KG))
+                distance_possibly_driven = float("{:.2f}".format((co2_total / GASOLINE_CO2_PER_GALLON)*vehicle_mpg))
+
+                print(f"Your PB&H emitted {co2_total} kg of CO2. You could have driven your car {distance_possibly_driven}"
+                      f" miles for the same emissions.")
+                print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
+
+                ask_again()
+
+            case "egg":
+                eggs_eaten = int(input("How many eggs did you eat?\n"))
+                co2_eggs = float("{:.2f}".format(eggs_eaten * co2_impacts["eggs"]))
+                print(f"Your eggs emitted {co2_eggs} kg of CO2.")
+                print(f"You could have driven {calc_vehicle_equivalent(co2_eggs)} miles for the same emissions.")
 
                 ask_again()
 
