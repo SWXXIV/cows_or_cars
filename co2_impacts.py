@@ -12,4 +12,5 @@ co2_impacts = {
   "bread slice": (.0589 / 16), # (one loaf contains 16 slices, roughly)
   "cottage cheese": 7.75,
   "eggs": (2.7 / 12), # 2.7kg per dozen eggs
+  "english muffin": (1.38 * 0.061), # from ClimateHub. Reported in CO2/ kg, and an english muffin is 61g per the package.https://apps.carboncloud.com/climatehub/product-reports/072220002751/USA
 }

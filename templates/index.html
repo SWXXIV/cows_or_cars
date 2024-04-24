@@ -10,7 +10,11 @@
             var inputGroup = document.createElement("div");
             inputGroup.innerHTML = `
                 <label for="food">Food:</label>
-                <input type="text" name="food[]" required>
+                <select name="food[]" required>
+                    {% for key, value in food_options.items() %}
+                        <option value="{{ key }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
                 <label for="quantity">Quantity:</label>
                 <input type="test" name="quantity[]" required>
                 <button type="button" onclick="removeFood(this)">Remove</button>
@@ -30,7 +34,11 @@
         <div id="food-container">
             <div>
                 <label for="food">Food:</label>
-                <input type="text" name="food[]" required>
+                <select name="food[]" required>
+                    {% for key, value in food_options.items() %}
+                        <option value="{{ key }}">{{ key }}</option>
+                    {% endfor %}
+                </select>
                 <label for="quantity">Quantity:</label>
                 <input type="text" name="quantity[]" required>
             </div>

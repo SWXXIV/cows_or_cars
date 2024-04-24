@@ -16,10 +16,12 @@ from co2_impacts_poore import ghg_poore as ghg
 
 app = Flask(__name__)
 
+food_options = co2_impacts
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', food_options=food_options)
 
 
 @app.route('/submit', methods=['POST'])
@@ -28,17 +30,21 @@ def submit():
         foods = request.form.getlist('food[]')
         quantities = request.form.getlist('quantity[]')
         total_CO2 = 0.0
+        results = "<h2>Results:</h2>"
 
         # You can now process the foods and quantities as needed
         for food, quantity in zip(foods, quantities):
             incremental_co2_impact = "{:.2f}".format(get_carbon_impact_dict(food, float(quantity)))
             total_CO2 += float(incremental_co2_impact)
-            print(f"Food: {food}, Quantity: {quantity}. The carbon impact of this ingredient is {incremental_co2_impact}")
+            results += (f"<p>Food: {food}, Quantity: {quantity}. The carbon impact of this ingredient is {incremental_co2_impact} Kg CO<sub>2</sub>e.</p>")
 
-        print(f"The total CO2 impact of this meal was {total_CO2}")
+        results += f"<p>The total CO2 impact of this meal was {'{:.2f}'.format(total_CO2)} Kg CO<sub>2</sub>e.</p>"
 
-        return(f"Food: {food}, Quantity: {quantity}. The carbon impact of this ingredient is {incremental_co2_impact} Kg of CO2e.\n"
-               f"The total CO2 impact of this meal was {'{:.2f}'.format(total_CO2)} Kg of CO2e.")
+        return results
+
+
+            # (f"Food: {food}, Quantity: {quantity}. The carbon impact of this ingredient is {incremental_co2_impact} Kg of CO2e.\n"
+            #    f"The total CO2 impact of this meal was {'{:.2f}'.format(total_CO2)} Kg of CO2e.")
 
 
 
