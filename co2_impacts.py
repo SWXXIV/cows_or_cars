@@ -10,7 +10,7 @@ co2_impacts = {
   "Gasoline (US gal)": 8.887,
   "Honey (Kg)": 1.4,
   "Peanut Butter (Kg)": 2.88,
-  "Bread (slices)": (.0589 / 16), # (one loaf contains 16 slices, roughly)
+  "Bread (slices)": (.589 / 16), # (one loaf contains 16 slices, roughly)
   "Cottage Cheese": 7.75,
   "Eggs, Large (qty eggs)": (2.7 / 12), # 2.7kg per dozen eggs
   "English Muffin (qty of muffins)": (1.38 * 0.061), # from ClimateHub. Reported in CO2/ kg, and an english muffin is 61g per the package.https://apps.carboncloud.com/climatehub/product-reports/072220002751/USA
