@@ -42,7 +42,10 @@ def submit():
 
         results += f"<p>For that amount of CO<sub>2</sub> emitted, could have burned one of the following:"
         for key, value in get_fuel_impact(total_CO2).items():
-            results += f"<p>{'{:.2f}'.format(value)} {key}</p>"
+            if key == "cordwood, cords":
+                results += f"<p>{'{:.2f}'.format(value)} {key} ({'{:.2f}'.format(value * 128)} cu ft of wood, or a cube of wood {'{:.2f}'.format((value * 128) ** (1 / 3))} ft on each side!)</p>"
+            else:
+                results += f"<p>{'{:.2f}'.format(value)} {key}</p>"
 
         return results
 
