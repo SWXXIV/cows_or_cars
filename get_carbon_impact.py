@@ -78,4 +78,7 @@ if __name__ == "__main__":
     # build_CO2_dict()
     print(get_fuel_impact(10.5))
     for key, value in get_fuel_impact(10.5).items():
-        print(f"<p>{'{:.2f}'.format(value)} {key}</p>")
+        if key == "cordwood, cords":
+            print(f"<p>{'{:.2f}'.format(value)} {key} ({'{:.2f}'.format(value * 128)} cu ft of wood, or a cube of wood {'{:.2f}'.format((value * 128)**(1/3))} ft on each side!)</p>")
+        else:
+            print(f"<p>{'{:.2f}'.format(value)} {key}</p>")
