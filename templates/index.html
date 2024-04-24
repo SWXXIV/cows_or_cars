@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Form</title>
+    <script>
+        function addFood() {
+            var container = document.getElementById("food-container");
+            var inputGroup = document.createElement("div");
+            inputGroup.innerHTML = `
+                <label for="food">Food:</label>
+                <input type="text" name="food[]" required>
+                <label for="quantity">Quantity:</label>
+                <input type="test" name="quantity[]" required>
+                <button type="button" onclick="removeFood(this)">Remove</button>
+            `;
+            container.appendChild(inputGroup);
+        }
+
+        function removeFood(button) {
+            button.parentNode.remove();
+        }
+    </script>
+</head>
+<body>
+    <h1>Food Climate Calculator</h1>
+    <h3>Enter an ingredient and a quantity (in Kg) to get started.</h3>
+    <form action="/submit" method="POST">
+        <div id="food-container">
+            <div>
+                <label for="food">Food:</label>
+                <input type="text" name="food[]" required>
+                <label for="quantity">Quantity:</label>
+                <input type="text" name="quantity[]" required>
+            </div>
+        </div>
+        <button type="button" onclick="addFood()">Add Additional Ingredient</button>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
