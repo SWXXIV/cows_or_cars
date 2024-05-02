@@ -40,6 +40,8 @@ def submit():
 
         results += f"<p>The total CO2 impact of this meal was {'{:.2f}'.format(total_CO2)} Kg CO<sub>2</sub>e.</p>"
 
+        # Create a report of similar emissions from fuel burning.
+        results += f"<h2>What else could you have done with that?</h2>"
         results += f"<p>For that amount of CO<sub>2</sub> emitted, could have burned one of the following:"
         for key, value in get_fuel_impact(total_CO2).items():
             if key == "cordwood, cords":
