@@ -41,7 +41,7 @@ def main():
                 distance = float(input("How many miles did you drive? Please enter a number.\n"))
                 vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
                 gas_used = distance / vehicle_mpg
-                CO2_emitted_driving = float("{:.2f}".format(get_carbon_impact_dict("gasoline", gas_used))) #float("{:.2f}".format(gas_used * GASOLINE_CO2_PER_GALLON))
+                CO2_emitted_driving = float("{:.2f}".format(get_carbon_impact_dict("gasoline, US gal", gas_used))) #float("{:.2f}".format(gas_used * GASOLINE_CO2_PER_GALLON))
                 beef_equivalent = float("{:.2f}".format(CO2_emitted_driving / ghg["Beef (beef herd)"]))
                 chicken_equivalent = float("{:.2f}".format(get_carbon_impact_dict("chicken", CO2_emitted_driving)))
 
@@ -52,10 +52,10 @@ def main():
 
             case "beef":
                 beef_eaten = float(input("How much beef did you eat, in kg?\n"))
-                CO2_of_beef_eaten = float("{:.2f}".format(get_carbon_impact_dict("beef", beef_eaten)))
+                CO2_of_beef_eaten = float("{:.2f}".format(get_carbon_impact_dict("Beef (Kg)", beef_eaten)))
                 vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
-                chicken_equivalent = float("{:.2f}".format(CO2_of_beef_eaten / co2_impacts["chicken"]))
-                distance_possibly_driven = float("{:.2f}".format((get_fuel_impact(CO2_of_beef_eaten)["gasoline"])*vehicle_mpg))
+                chicken_equivalent = float("{:.2f}".format(CO2_of_beef_eaten / co2_impacts["Chicken (Kg)"]))
+                distance_possibly_driven = float("{:.2f}".format((get_fuel_impact(CO2_of_beef_eaten)["gasoline, US gal"])*vehicle_mpg))
 
                 print(f"The beef you ate emitted {CO2_of_beef_eaten} kg of CO2. You could have driven your car {distance_possibly_driven}"
                       f" miles for the same emissions.")
