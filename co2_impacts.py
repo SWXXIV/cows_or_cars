@@ -20,4 +20,5 @@ co2_impacts = {
   "Cottage Cheese": 7.75,
   "Eggs, Large (qty eggs)": (2.7 / 12), # 2.7kg per dozen eggs
   "English Muffin (qty of muffins)": (1.38 * 0.061), # from ClimateHub. Reported in CO2/ kg, and an english muffin is 61g per the package.https://apps.carboncloud.com/climatehub/product-reports/072220002751/USA
+  "Milk, kg": (0.96), #see refs/milk_impacts.pdf
 }
