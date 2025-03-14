@@ -1,5 +1,7 @@
 # this is a dict of impacts that we can pull from
 
+#TODO: Create an intermediate between the text on the frontend and the dict key
+
 
 co2_impacts = {
   "Rolled Oats (Kg)": 1.25,
