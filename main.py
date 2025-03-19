@@ -65,6 +65,10 @@ def calc_co2_chicken(qty: float) -> float:
     co2_of_chicken_eaten = float("{:.2f}".format(get_carbon_impact_dict("Chicken (Kg)", qty)))
     return co2_of_chicken_eaten
 
+def calc_co2_coffee(qty: float) -> float:
+    co2_of_coffee_consumed = float("{:.2f}".format(get_carbon_impact_dict("Coffee (cups)", (qty *.017))))
+    return co2_of_coffee_consumed
+
 def main():
 
     while keep_going:
@@ -121,12 +125,12 @@ def main():
 
             case "coffee":
                 coffee_cups_consumed = float(input("How much coffee did you drink, in cups?\n"))
-                CO2_of_coffee_consumed = float("{:.2f}".format(get_carbon_impact_dict("coffee", (coffee_cups_consumed*.017))))
+                co2_of_coffee_consumed = calc_co2_coffee(coffee_cups_consumed)
                 vehicle_mpg = float(input("What mpg does your car get? Please enter a number.\n"))
-                beef_equivalent = float("{:.2f}".format(get_carbon_impact_dict("beef", CO2_of_coffee_consumed)))
-                distance_possibly_driven = float("{:.2f}".format(get_fuel_impact(CO2_of_coffee_consumed)["gasoline"]*vehicle_mpg))
+                beef_equivalent = calc_beef_equivalent(co2_of_coffee_consumed)
+                distance_possibly_driven = calc_vehicle_equivalent(co2_of_coffee_consumed, vehicle_mpg)
 
-                print(f"The coffee you drank emitted {CO2_of_coffee_consumed} kg of CO2. You could have driven your car {distance_possibly_driven}"
+                print(f"The coffee you drank emitted {co2_of_coffee_consumed} kg of CO2. You could have driven your car {distance_possibly_driven}"
                       f" miles for the same emissions.")
                 print(f"Or you could have eaten {beef_equivalent} kg of beef instead.")
 
